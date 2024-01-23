@@ -1,0 +1,22 @@
+<?php
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+$page = "";
+$routes = [
+    '/' => 'controllers/admin/index.controller.php',
+    '/categories' => 'controllers/categories/category.controller.php',
+    '/items' => 'controllers/items/item.controller.php',
+    '/orders' => 'controllers/orders/order.controller.php',
+    '/reports' => 'controllers/reports/report.controller.php',
+    '/users' => 'controllers/users/user.controller.php',
+];
+
+if (array_key_exists($uri, $routes)) {
+    $page = $routes[$uri];
+} else {
+   http_response_code(404);
+   $page = 'views/errors/404.php';
+}
+require "views/partials/header.php";
+require "views/partials/navbar.php";
+require $page;
+require "views/partials/footer.php";
