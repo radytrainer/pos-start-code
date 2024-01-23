@@ -16,7 +16,7 @@ if (array_key_exists($uri, $routes)) {
    http_response_code(404);
    $page = 'views/errors/404.php';
 }
-require "views/partials/header.php";
-require "views/partials/navbar.php";
+require "layouts/header.php";
+require "layouts/navbar.php";
 require $page;
-require "views/partials/footer.php";
+require "layouts/footer.php";
